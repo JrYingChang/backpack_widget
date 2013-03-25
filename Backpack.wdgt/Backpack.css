@@ -1,0 +1,571 @@
+/*
+
+Copyright (C) 2005-2008, Chipt Productions, LLC.  All rights reserved.
+
+*/
+
+/* Basic CSS */
+body {
+	margin: 0;
+}
+a, a:active, a:link, a:visited, a:hover {
+  color: #090;
+}
+em.nothing {
+  color: #999;
+  display: block;
+  height: 140px;
+  line-height: 140px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Dashboard Essentials */
+.flip {
+    position: absolute;
+    bottom: 17px;
+    right: 14px;
+    width: 13px;
+    height: 13px;
+		background;
+}
+#flip {
+    opacity: 0;
+    background: url(file:///System/Library/WidgetResources/ibutton/white_i.png) no-repeat top left;
+    z-index: 8000;
+}
+#fliprollie {
+    display: none;
+    opacity: 0.25;
+    background: url(file:///System/Library/WidgetResources/ibutton/white_rollie.png) no-repeat top left;
+    z-index: 7999;
+}
+
+/************************************\
+ The Front Side                   
+\************************************/
+#front {
+	height: 50px;
+	width: 277px;
+	position: relative;
+}
+#button_area {
+	position: absolute;
+	z-index: 500;
+	padding: 5px 13px;
+	top: 0;
+	left: 0;
+}
+#button_area img {
+	vertical-align: top;
+}
+#button_area .logo {
+	margin: 4px 4px 0 0;
+	cursor: hand;
+}
+#button_area #lock {
+  visibility: hidden;
+  margin: 9px 0 0 8px;
+  opacity: 0.5;
+}
+#button_reminders, #button_notes, #button_lists {
+	margin: 5px 0 0 0;
+}
+#collapsed_bottom {
+	position: absolute;
+	left: 0;
+	height: 29px;
+	width: 277px;
+	bottom: 0px;
+	background: url(Images/collapsed_bottom.png) bottom no-repeat;
+}
+#expanded_top {
+	position: absolute;
+	left: 0;
+	top: 21px;
+	height: 0px;
+	width: 277px;
+	overflow: hidden;
+}
+#expanded {
+	position: absolute;
+	left: 0;
+	top: 38px;
+	width: 277px;
+	overflow: hidden;
+}
+#slider {
+	position: relative;
+	display: none;
+	top: -205px;
+}
+#reminders, #lists, #notes {
+	display: none;
+}
+.content_pane {
+	background: url(Images/content_area_bg.png) no-repeat top left;
+	padding: 0 9px;
+	height: 183px;
+	font: 10px normal "Lucida Grande";
+	position: relative;
+	overflow: hidden;
+}
+.select_area {
+	height: 20px;
+	line-height: 20px;
+	background: url(Images/select_area_bg.png) right no-repeat;
+	border-bottom: 1px solid #d4d6b8;
+	position: relative;
+}
+.select_area p {
+	position: absolute;
+	font-weight: bold;
+	text-shadow: #fff 0px 1px 0px;
+	top: 0px;
+	margin: 0;
+	padding: 0;
+	left: 4px;
+	line-height: 20px;
+	right: 18px;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	white-space:nowrap;
+	z-index: 15;
+}
+.select_area select {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 18px;
+	width: 100%;
+	opacity: 0.0;
+	display: none;
+	z-index: 16;
+}
+.content_area {
+	overflow: hidden;
+	position: relative;
+	bottom: 0px;
+	height: 183px;
+}
+.select_area + .content_area {
+	height: 162px;
+}
+.content {
+	padding: 3px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.edit {
+  display: none;
+  position: relative;
+  opacity: 0.3;
+  margin-left: 3px;
+  vertical-align: top;
+}
+.edit:hover {
+  opacity: 1.0;
+}
+#info_area {
+	background: url(Images/info_area_bg.png) no-repeat top left;
+	height: 35px;
+	padding: 0 9px;
+}
+#add_button {
+	position: absolute;
+	bottom: 16px;
+	left: 12px;
+}
+#info {
+	height: 21px;
+	margin-left: 35px;
+	color: #eee;
+	font: italic bold 10px/21px "Lucida Grande";
+}
+
+/************************************\
+ Dialogs                   
+\************************************/
+.dialog {
+	color: #fff;
+	padding: 5px 10px 10px;
+	background: url(Images/dialog_bg.png);
+	width: 239px;
+	bottom: -300px;
+	position: absolute;
+	z-index: 20;
+	font: 11px "Helvetica Neue";
+}
+.dialog h1 {
+	font-size: 13px;
+	margin: 0 0 4px 0;
+	padding: 0;
+}
+.dialog small {
+	display: block;
+	font-size: 10px;
+}
+.dialog .buttons {
+	text-align: right;
+	margin: 5px 0 0 0;
+	height: 20px;
+	line-height: 20px;
+	font-size: 11px;
+	font-weight: bold;
+}
+.dialog .button {
+	display: inline-block;
+	padding-left: 4px;
+	-apple-dashboard-region:dashboard-region(control rectangle);
+}
+.dialog .default .buttonMiddle {
+	padding: 0 10px;
+}
+.dialog .buttonLeft
+{
+	display: none;
+}
+.dialog .buttonRight
+{
+	display: none;
+}
+.dialog .buttonMiddle
+{
+	position:relative;
+	display:inline-block;
+	border-width: 0 10px;
+	-webkit-border-image: url(Images/dialogBtn.png) 0 10 0 10;
+	height:20px;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 20px;
+}
+.dialog input[type="text"] {
+	font-size: 10px;
+	width: 100%;
+}
+.dialog textarea {
+	font-size: 10px;
+	width: 100%;
+}
+.popup_menu {
+	border: 1px solid #222;
+	background: url(Images/popup_menu_bg.png) right no-repeat;
+	height: 18px;
+	display: inline-block;
+	vertical-align: bottom;
+	position: relative;
+	padding: 0;
+	margin: 6px 0 0 0;
+}
+.popup_menu p {
+	position: absolute;
+	font: 11px "Helvetica Neue";
+	font-weight: Bold;
+	color: white;
+	text-shadow: #black 0px -1px 0px;
+	top: 0px;
+	margin: 0;
+	padding: 0;
+	left: 4px;
+	line-height: 18px;
+	right: 13px;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	white-space:nowrap;
+	z-index: 30;
+}
+.popup_menu select {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 18px;
+	width: 100%;
+	opacity: 0.0;
+	display: none;
+	z-index: 31;
+}
+
+/************************************\
+ Reminders                   
+\************************************/
+.reminder {
+	margin: 0;
+	padding: 0;
+}
+.reminder dt {
+	margin: 0;
+	padding: 0;
+	line-height: 12px;
+}
+.reminder dd {
+	color: #6a6a6a;
+	font-size: 9px;
+	margin: 0;
+	padding: 0;
+}
+.reminder strong {
+	color: #3a3;
+	font-size: 9px;
+}
+.reminder small {
+	color: #7a7a7a;
+	font-size: 8px;
+}
+.reminder + .reminder {
+	margin-top: 3px;
+	background:  url(Images/reminder_separator.png) top left no-repeat;
+	padding-top: 3px;
+}
+#remindersSpecificTime {
+	visibility: hidden;
+	margin-left: 7px;
+}
+#remindersPopupTime {
+	width: 140px;
+}
+#remindersPopupMonth, #remindersPopupYear {
+	width: 45px;
+}
+#remindersPopupDate, #remindersPopupHour, #remindersPopupMinute {
+	width: 30px;
+}
+#remindersPopupMeridiem {
+  width: 38px;
+}
+
+/************************************\
+ Lists                   
+\************************************/
+#listIncomplete, #listComplete {
+	margin: 0;
+	padding: 0;
+}
+#listIncomplete p, #listComplete p {
+  margin: 0;
+  padding: 0;
+}
+#listIncomplete p+p, #listComplete p+p {
+  margin-top: 6px;
+}
+#listIncomplete li, #listComplete li {
+	margin: 0;
+	list-style: none;
+	line-height: 14px;
+}
+#listIncomplete .item, #listComplete .item {
+	max-width: 218px;
+	display: inline-block;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	white-space:nowrap;
+}
+#listIncomplete li:hover .item {
+  max-width: 205px;
+}
+#listIncomplete li {
+	font-weight: bold;
+}
+#listIncomplete a {
+	color: #4E8BC8;
+}
+#listComplete li {
+	color: #ababab;
+}
+#listIncomplete .checkbox, #listComplete .checkbox {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 2px 3px 2px 0;
+	background-position: bottom left;
+	vertical-align: top;
+}
+#listIncomplete .checkbox:hover, #listComplete .checkbox:hover {
+	background-position: top left;
+}
+#listIncomplete .checkbox {
+	background-image: url(Images/list_incomplete.png);
+}
+#listComplete .checkbox {
+	background-image: url(Images/list_complete.png);
+}
+
+/************************************\
+ Notes                  
+\************************************/
+.note {
+	margin: 0;
+	padding: 0;
+}
+.note dt {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	line-height: 12px;
+}
+.note dt span {
+  color: #777;
+  font-weight: normal;
+  font-size: 9px;
+  white-space: nowrap;
+}
+.note dd {
+	font-size: 9px;
+	margin: 0;
+	padding: 0;
+}
+.note table {
+  border-collapse: collapse;
+}
+.note td {
+  border: 1px solid #ccc;
+  padding: 2px;
+  font-size: 9px;
+}
+.note p {
+  margin: 0;
+  padding: 0;
+}
+.note p + p {
+  margin-top: 6px;
+}
+.note blockquote {
+  color: #111;
+  margin: 0;
+  padding: 0 0 0 9px;
+  background: url(Images/blockquote_bg.png) top left no-repeat;
+}
+.note + .note {
+	margin-top: 4px;
+	background:  url(Images/reminder_separator.png) top left no-repeat;
+	padding-top: 4px;
+}
+#notesBodyContent {
+  height: 84px;
+}
+
+/************************************\
+ The Scroll Bar
+\************************************/
+.scroller {
+	position: absolute;
+	top: 3px;
+	bottom: 3px;
+	right: 3px;
+	width: 19px;
+	display: block;
+	-apple-dashboard-region:dashboard-region(control rectangle);
+}
+.scroll_track_top {
+	position: absolute;
+	top: 0px;
+	width: 19px;
+	height: 18px;
+	background: url(Images/scroll_track_top.png) no-repeat top left;
+}
+.scroll_track_mid {
+	position: absolute;
+	top: 18px;
+	width: 19px;
+	bottom: 18px;
+	background: url(Images/scroll_track_mid.png) repeat-y top left;
+}
+.scroll_track_bot {
+	position: absolute;
+	bottom: 0px;
+	width: 19px;
+	height: 18px;
+	background: url(Images/scroll_track_bottom.png) no-repeat top left;
+}
+.scroll_thumb {
+	position: absolute;
+	top: 0px;
+	left: 1px;
+	height: 27px;
+	min-height: 27px;
+	display: block;
+}
+.scroll_thumb_top {
+	position: absolute;
+	top: 0px;
+	width: 18px;
+	height: 9px;
+	background: url(Images/scroll_bar_top.png) no-repeat top left;
+}
+.scroll_thumb_mid {
+	position: absolute;
+	top: 9px;
+	width: 18px;
+	bottom: 9px;
+	background: url(Images/scroll_bar_mid.png) repeat-y top left;
+}
+.scroll_thumb_bot {
+	position: absolute;
+	bottom: 0px;
+	width: 18px;
+	height: 9px;
+	background: url(Images/scroll_bar_bottom.png) no-repeat top left;
+}
+
+/************************************\
+ The Back Side                   
+\************************************/
+
+#back {
+	display: none;
+	width: 242px;
+	height: 238px;
+	background: url(Images/Default_reverse.png) no-repeat top left;
+	position: relative;
+	font: bold 10px "Lucida Grande";
+	color: #fff;
+	padding: 0 18px;
+}
+#backDone {
+	position:absolute;
+	bottom:21px;
+	right:18px;
+	line-height: 14px;
+}
+#backDone img {
+  vertical-align: bottom;
+}
+#poweredBy {
+	position: relative;
+	top: 10px;
+	left: 18px;
+}
+#back .prefs {
+  position: relative;
+  top: 6px;
+}
+#back p {
+  margin: 4px 0 0 0;
+}
+#back #prefUsername {
+  width: 135px;
+}
+#back #prefToken {
+  width: 100%;
+}
+#back #backGrowl {
+  margin-top: 4px;
+  visibility: hidden;
+}
+#backCredits {
+	position: absolute;
+	bottom: 21px;
+	left: 18px;
+	font: bold 9px "Helvetica Neue";
+	color: white;
+}
+#debug {
+  position: absolute;
+  left: 350px;
+  top: 50px;
+  padding: 5px;
+  border: 1px solid black;
+}

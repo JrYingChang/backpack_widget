@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+
+Copyright (C) 2005-2008, Chipt Productions, LLC.  All rights reserved.
+
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+	  @import "Backpack.css";
+  </style>
+  <script type='text/javascript' src='Scripts/Backpack.js' charset='utf-8'></script>
+  <script type='text/javascript' src='Scripts/Animate.js' charset='utf-8'></script>
+  <script type='text/javascript' src='Scripts/Textile.js' charset='utf-8'></script>
+  <script type='text/javascript' src='file:///System/Library/WidgetResources/button/genericButton.js' charset='utf-8'></script>
+</head>
+
+<body id="body" onload="setup()" onmousemove='mousemove(event)' onmouseout='mouseexit(event)'>
+	<div id="front">
+		<img src="Images/front_top.png" />
+		<div id="button_area"><img src="Images/logo_small.png" class="logo" onclick="gotoBackpackPage()" /><img
+			id="button_reminders" src="Images/button_reminders_off.png" onclick="switchTo('reminders')" /><img 
+			id="button_lists" src="Images/button_lists_off.png" onclick="switchTo('lists')" /><img
+			id="button_notes" src="Images/button_notes_off.png" onclick="switchTo('notes')" /><img
+      id="lock" src="Images/lock.png" />
+		</div>
+		<div id="collapsed_bottom"></div>
+		<div id="expanded_top"><img src="Images/expanded_top.png" /></div>
+		<div id="expanded"><div id="slider">
+			
+			<!-- Start Reminders -->
+			<div id="reminders" class="content_pane">
+				<div id="reminders_dialog" class="dialog">
+					<h1>Add A Reminder:</h1>
+					<input type="text" id="remindersItemContent" onkeypress="doThisOnReturn( this.parentNode.submit )" />
+					<div id="remindersPopupTime" class="popup_menu">
+						<select onchange="changePopup(this);changeTime(this)"></select><p></p>
+					</div>
+					<div id="remindersSpecificTime">
+					<div id="remindersPopupMonth" class="popup_menu">
+						<select onchange="changePopup(this)"></select><p></p>
+					</div>
+					<div id="remindersPopupDate" class="popup_menu">
+						<select onchange="changePopup(this)"></select><p></p>
+					</div>
+					<div id="remindersPopupYear" class="popup_menu">
+						<select onchange="changePopup(this)"></select><p></p>
+					</div><br />
+					<div id="remindersPopupHour" class="popup_menu">
+						<select onchange="changePopup(this)"></select><p></p>
+					</div>
+					<div id="remindersPopupMinute" class="popup_menu">
+						<select onchange="changePopup(this)"></select><p></p>
+					</div>
+					<div id="remindersPopupMeridiem" class="popup_menu">
+						<select onchange="changePopup(this)"></select><p></p>
+					</div>
+					</div>
+					<div class="buttons">
+						<div class="button" onclick="hideDialog(true)">
+							<div class="buttonLeft"></div>
+							<div class="buttonMiddle">Cancel</div>
+							<div class="buttonRight"></div>
+						</div>
+						<div class="button default" onclick="this.parentNode.parentNode.submit()">
+							<div class="buttonLeft"></div>
+							<div class="buttonMiddle">Accept</div>
+							<div class="buttonRight"></div>
+						</div>
+					</div>
+				</div>
+				<div class="content_area">
+					<div id="reminders_content" class="content"></div>
+				</div>
+			</div>
+			<!-- End Reminders -->
+			
+			<!-- Start Lists -->
+			<div id="lists" class="content_pane">
+				<div id="lists_dialog" class="dialog">
+					<h1>Add A List Item:</h1>
+					<input type="text" id="listsItemContent" onkeypress="doThisOnReturn( this.parentNode.submit )" />
+					<div class="buttons">
+						<div class="button" onclick="hideDialog(true)">
+							<div class="buttonLeft"></div>
+							<div class="buttonMiddle">Cancel</div>
+							<div class="buttonRight"></div>
+						</div>
+						<div class="button default" onclick="this.parentNode.parentNode.submit()">
+							<div class="buttonLeft"></div>
+							<div class="buttonMiddle">Accept</div>
+							<div class="buttonRight"></div>
+						</div>
+					</div>
+				</div>
+				<div id="listsPopupPage" class="select_area">
+					<select onmousedown="if (gIsDialogActive) return false" onchange="changePage(this)"></select><p></p>
+				</div>
+				<div class="content_area">
+					<div id="lists_content" class="content">
+						<ul id="listIncomplete"></ul>
+						<ul id="listComplete"></ul>
+					</div>
+				</div>
+			</div>
+			<!-- End Lists -->
+			
+			<!-- Start Notes -->
+			<div id="notes" class="content_pane">
+				<div id="notes_dialog" class="dialog">
+					<h1>Add A Note:</h1>
+					<small>Title:</small>
+					<input type="text" id="notesTitleContent" onkeypress="doThisOnReturn( this.parentNode.submit )" />
+					<small>Body:</small>
+					<textarea id="notesBodyContent"></textarea>
+					<div class="buttons">
+						<div class="button" onclick="hideDialog(true)">
+							<div class="buttonLeft"></div>
+							<div class="buttonMiddle">Cancel</div>
+							<div class="buttonRight"></div>
+						</div>
+						<div class="button default" onclick="this.parentNode.parentNode.submit()">
+							<div class="buttonLeft"></div>
+							<div class="buttonMiddle">Accept</div>
+							<div class="buttonRight"></div>
+						</div>
+					</div>
+				</div>
+				<div id="notesPopupPage" class="select_area">
+					<select onmousedown="if (gIsDialogActive) return false" onchange="changePage(this)"></select><p></p>
+				</div>
+				<div class="content_area">
+					<div id="notes_content" class="content"></div>
+				</div>
+			</div>
+			<!-- End Notes -->
+			
+			<!-- Begin Info Area -->
+			<div id="info_area">
+				<img id="add_button" src="Images/button_add.png" onclick="showDialog()" />
+				<div id="info"></div>
+				<div class='flip' id='flip' onclick='showBack(event)' onmouseover='enterflip(event)' onmouseout='exitflip(event)'></div>
+				<div class='flip' id='fliprollie'></div>	
+			</div>
+			<!-- End Info Area -->
+		</div></div>
+	</div>
+
+	<div id="back">
+		<img id="poweredBy" src="Images/powered_by_backpack.png" onclick="widget.openURL('http://backpackit.com')"/>
+		<div class="prefs">
+		<p>Username:</p>
+		<input type="text" id="prefUsername" />
+		<p>API Key:</p>
+		<input type="password" id="prefToken" />
+		<div id="backGrowl">
+		  <input type="checkbox" value="yes" id="prefGrowl" />
+		  <label for="prefGrowl" onclick="document.getElementById('prefGrowl').checked = !document.getElementById('prefGrowl').checked">
+		    Use Growl to show reminders
+		  </label>
+		</div>
+	  </div>
+		<div id="backCredits">
+		  <div id="versionCheck"></div>
+		  <span id="version_number"></span>
+		  by <span onclick="widget.openURL('http://chipt.com')">chipt.com</span>
+		</div>
+		<div id="backDone"></div>
+	</div>
+	
+	<div id="debug">
+	  <div class="dialog">
+	    <div class="button" onclick="hideDialog(true)">
+				<div class="buttonLeft"></div>
+				<div class="buttonMiddle">Cancel</div>
+				<div class="buttonRight"></div>
+			</div>
+	  </div>
+</body>
+</html>
